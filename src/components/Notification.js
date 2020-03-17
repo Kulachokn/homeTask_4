@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import routes from "../routes";
 import styles from "../views/styles.module.css";
 
-const Navigations = () => (
+const Notification = () => (
   <ul>
     <li>
       <NavLink
@@ -27,4 +27,4 @@ const Navigations = () => (
   </ul>
 );
 
-export default Navigations;
+export default Notification;
