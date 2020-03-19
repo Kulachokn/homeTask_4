@@ -44,17 +44,17 @@ const fetchMovieDetails = movieId => {
 // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>
 const fetchMovieCast = movieId => {
     return fetch(
-        `${baseURL}${searchMovieDetails}${movieId}credits?api_key=${key}`)
+        `${baseURL}${searchMovieDetails}${movieId}/credits?api_key=${key}`)
         .then(res => res.json())
         .then(data => {
-            return data.results;
+            return data.results.cast;
         });
 };
 
 // https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
 const fetchMovieReviews = movieId => {
     return fetch(
-        `${baseURL}${searchMovieDetails}${movieId}reviews?api_key=${key}`)
+        `${baseURL}${searchMovieDetails}${movieId}/reviews?api_key=${key}`)
         .then(res => res.json())
         .then(data => {
             return data.results;

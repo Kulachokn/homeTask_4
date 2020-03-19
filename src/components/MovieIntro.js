@@ -27,8 +27,13 @@ const MovieIntro = ({movie}) => {
     )
 };
 
+
+MovieIntro.defaultProps = {
+    poster_path: 'https://via.placeholder.com/350x150'
+};
+
 MovieIntro.propTypes = {
-    poster_path: T.string.isRequired,
+    poster_path: T.string,
     title: T.string.isRequired,
     release_date: T.string.isRequired,
     vote_average: T.number.isRequired,

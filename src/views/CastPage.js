@@ -19,7 +19,10 @@ export default class CastPage extends Component {
         this.setState({ loading: true });
         movieAPI
             .fetchMovieCast(this.props.match.params.movieId)
-            .then(cast => this.setState({cast}))
+            .then(cast => {
+                console.log(cast);
+                this.setState({cast})
+            })
             .catch(({message}) => this.setState({error: message}))
             .finally(() => this.setState({loading: false}));
     };
@@ -28,7 +31,7 @@ export default class CastPage extends Component {
         const {cast, error, loading} = this.state;
         return (
             <>
-                {error && <Navigation message={error} />}
+                {/*{error && <Navigation message={error} />}*/}
                 {loading && <Spinner />}
                 {cast.length > 0
                     ? <CastList cast={cast} />

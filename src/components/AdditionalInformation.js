@@ -36,8 +36,8 @@ const AdditionalInformation = ({match, location}) => {
                 </ul>
             </div>
 
-            {/*<Route path={`${match.path}${routes.cast}`} component={CastPage} />*/}
-            {/*<Route path={`${match.path}${routes.reviews}`} component={ReviewsPage} />*/}
+            <Route path={`${match.path}/cast`} component={CastPage} />
+            <Route path={`${match.path}/reviews`} component={ReviewsPage} />
         </>
     )
 };

@@ -27,7 +27,7 @@ export default class ReviewsPage extends Component {
         const {reviews, error, loading} = this.state;
         return (
             <>
-                {error && <Navigation message={error} />}
+                {/*{error && <Navigation message={error} />}*/}
                 {loading && <Spinner />}
                 {reviews.length > 0
                     ? <ReviewsList reviews={reviews} />

@@ -8,7 +8,7 @@ import AdditionalInformation from "../components/AdditionalInformation";
 
 export default class MovieDetailsPage extends Component {
   state = {
-    movies: [],
+    movie: null,
     error: '',
     loading: false
   };
@@ -41,7 +41,7 @@ export default class MovieDetailsPage extends Component {
     return (
       <main>
         <button type="button" onSubmit={this.handleGoBack}>Back to movies</button>
-        {error && <Navigation message={error} />}
+        {/*<Navigation />*/}
         {loading && <Spinner />}
         {movie  && (
           <>
