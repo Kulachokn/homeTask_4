@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import SearchBox from "../components/SearchBox"
 import getQueryParams from "../utils/getQueryParams";
 import movieAPI from "../services/movie-api";
-import MoviesList from "./MoviesList";
-import Notification from "../components/Notification";
+import MoviesList from "../components/MoviesList";
+import Navigation from "../components/Navigation";
 import Spinner from "../components/Loader";
 
 export default class MoviesPage extends Component {
@@ -19,6 +19,7 @@ export default class MoviesPage extends Component {
 
     if (query) {
       this.fetchMovies(query);
+
     }
   }
 
@@ -54,7 +55,7 @@ export default class MoviesPage extends Component {
     return (
       <>
         <SearchBox onSubmit={this.handleChangeQuery} />
-        {error && <Notification message={error} />}
+        {error && <Navigation message={error} />}
         {loading && <Spinner />}
         {movies.length > 0 && <MoviesList movies={movies} />}
       </>

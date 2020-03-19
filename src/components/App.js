@@ -6,6 +6,9 @@ import MoviesPage from "../views/MoviesPage";
 import MovieDetailsPage from "../views/MovieDetailsPage";
 import NotFoundMovie from "../views/NotFoundMovie";
 import routes from "../routes";
+import CastPage from "../views/CastPage";
+import ReviewsPage from "../views/ReviewsPage";
+
 
 const App = () => (
   <Layout>
@@ -13,8 +16,8 @@ const App = () => (
       <Route path={routes.home} exact component={HomePage} />
       <Route path={routes.movies} exact component={MoviesPage} />
       <Route path={routes.movieDetails} component={MovieDetailsPage} />
-      {/*<Route path={routes.movieCast} component={Cast} />*/}
-      {/*<Route path={routes.movieReviews} component={Reviews} />*/}
+      {/*<Route path={routes.cast} component={CastPage} />*/}
+      {/*<Route path={routes.reviews} component={ReviewsPage} />*/}
       <Route component={NotFoundMovie} />
     </Switch>
   </Layout>

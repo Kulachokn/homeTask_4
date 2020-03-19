@@ -1,11 +1,11 @@
 import React from "react";
 import MovieListItem from "./MoviesListItem";
 
-export default function MoviesList ({movies}) {
+export default function MoviesList ({movies, location}) {
     return (
         <ul>
             {movies.map(({id, title, name}) => (
-                <MovieListItem key={id} title={title} name={name} />
+                <MovieListItem key={id} id={id} title={title} name={name} location={location}/>
                 )
             )}
         </ul>

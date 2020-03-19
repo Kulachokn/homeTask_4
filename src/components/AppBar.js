@@ -1,6 +1,6 @@
 import React from "react";
-import Notification from "./Notification";
+import Navigation from "./Navigation";
 
-const AppBar = () => <header><Notification /></header>;
+const AppBar = () => <header><Navigation /></header>;
 
 export default AppBar;

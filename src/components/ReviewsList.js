@@ -6,6 +6,7 @@ export default function ReviewsList({reviews}) {
         <ul>
             {reviews.map(({id, author, content}) => (
                 <ReviewsListItem
+                    id={id}
                     key={id}
                     author={author}
                     content={content}

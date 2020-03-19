@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import movieAPI from "../services/movie-api";
 import Spinner from "../components/Loader";
-import Notification from "../components/Notification";
-import ReviewsList from "./ReviewsList";
+import Navigation from "../components/Navigation";
+import ReviewsList from "../components/ReviewsList";
 
-export default class Reviews extends Component {
+export default class ReviewsPage extends Component {
     state = {
         reviews: [],
         error: '',
@@ -15,9 +15,9 @@ export default class Reviews extends Component {
         this.fetchMovies(this.props.match.params.movieId);
     };
 
-    fetchMovies = () => {
+    fetchMovies = movieId => {
         movieAPI
-            .fetchMovieDetails(this.props.match.params.movieId)
+            .fetchMovieReviews(this.props.match.params.movieId)
             .then(reviews => this.setState({ reviews: [...reviews] }))
             .catch(({message}) => this.setState({error: message}))
             .finally(() => this.setState({loading: false}));
@@ -27,7 +27,7 @@ export default class Reviews extends Component {
         const {reviews, error, loading} = this.state;
         return (
             <>
-                {error && <Notification message={error} />}
+                {error && <Navigation message={error} />}
                 {loading && <Spinner />}
                 {reviews.length > 0
                     ? <ReviewsList reviews={reviews} />

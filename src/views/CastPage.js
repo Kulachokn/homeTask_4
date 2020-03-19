@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import movieAPI from "../services/movie-api";
 import Spinner from "../components/Loader";
-import Notification from "../components/Notification";
-import CastList from "./CastList";
+import Navigation from "../components/Navigation";
+import CastList from "../components/CastList";
 
-export default class Cast extends Component {
+export default class CastPage extends Component {
     state = {
         cast: [],
         error: '',
@@ -15,9 +15,10 @@ export default class Cast extends Component {
         this.fetchMovies(this.props.match.params.movieId);
     };
 
-    fetchMovies = () => {
+    fetchMovies = movieId => {
+        this.setState({ loading: true });
         movieAPI
-            .fetchMovieDetails(this.props.match.params.movieId)
+            .fetchMovieCast(this.props.match.params.movieId)
             .then(cast => this.setState({cast}))
             .catch(({message}) => this.setState({error: message}))
             .finally(() => this.setState({loading: false}));
@@ -27,7 +28,7 @@ export default class Cast extends Component {
         const {cast, error, loading} = this.state;
         return (
             <>
-                {error && <Notification message={error} />}
+                {error && <Navigation message={error} />}
                 {loading && <Spinner />}
                 {cast.length > 0
                     ? <CastList cast={cast} />
