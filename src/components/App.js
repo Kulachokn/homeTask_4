@@ -9,7 +9,6 @@ import routes from "../routes";
 import CastPage from "../views/CastPage";
 import ReviewsPage from "../views/ReviewsPage";
 
-
 const App = () => (
   <Layout>
     <Switch>

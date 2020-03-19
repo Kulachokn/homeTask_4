@@ -9,7 +9,7 @@ import AdditionalInformation from "../components/AdditionalInformation";
 export default class MovieDetailsPage extends Component {
   state = {
     movie: null,
-    error: '',
+    error: "",
     loading: false
   };
 
@@ -19,17 +19,16 @@ export default class MovieDetailsPage extends Component {
 
   fetchMovies = () => {
     movieAPI
-        .fetchMovieDetails(this.props.match.params.movieId)
-        .then(movie => this.setState({ movie }))
-        .catch(({ message }) => this.setState({ error: message }))
-        .finally(() => this.setState({ loading: false }));
+      .fetchMovieDetails(this.props.match.params.movieId)
+      .then(movie => this.setState({ movie }))
+      .catch(({ message }) => this.setState({ error: message }))
+      .finally(() => this.setState({ loading: false }));
   };
 
   handleGoBack = () => {
+    const { state } = this.props.location;
 
-    const {state} = this.props.location;
-
-    if ( state && state.from ) {
+    if (state && state.from) {
       return this.props.history.push(state.from);
     }
 
@@ -37,15 +36,17 @@ export default class MovieDetailsPage extends Component {
   };
 
   render() {
-    const {movie, error, loading} = this.state;
+    const { movie, error, loading } = this.state;
     return (
       <main>
-        <button type="button" onSubmit={this.handleGoBack}>Back to movies</button>
+        <button type="button" onSubmit={this.handleGoBack}>
+          Back to movies
+        </button>
         {/*<Navigation />*/}
         {loading && <Spinner />}
-        {movie  && (
+        {movie && (
           <>
-            <MovieIntro movie={movie}/>
+            <MovieIntro movie={movie} />
             <AdditionalInformation />
           </>
         )}

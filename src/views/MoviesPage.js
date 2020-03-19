@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import SearchBox from "../components/SearchBox"
+import SearchBox from "../components/SearchBox";
 import getQueryParams from "../utils/getQueryParams";
 import movieAPI from "../services/movie-api";
 import MoviesList from "../components/MoviesList";
@@ -10,7 +10,7 @@ import Spinner from "../components/Loader";
 export default class MoviesPage extends Component {
   state = {
     movies: [],
-    error: '',
+    error: "",
     loading: false
   };
 
@@ -19,14 +19,12 @@ export default class MoviesPage extends Component {
 
     if (query) {
       this.fetchMovies(query);
-
     }
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-
-    const {query: prevQuery} = getQueryParams(prevProps.location.search);
-    const {query: nextQuery} = getQueryParams(this.props.location.search);
+    const { query: prevQuery } = getQueryParams(prevProps.location.search);
+    const { query: nextQuery } = getQueryParams(this.props.location.search);
 
     if (prevQuery !== nextQuery) {
       this.fetchMovies(nextQuery);
@@ -35,10 +33,10 @@ export default class MoviesPage extends Component {
 
   fetchMovies = query => {
     movieAPI
-        .fetchMovieWithQuery(query)
-        .then(movies => this.setState({ movies }))
-        .catch(({ message }) => this.setState({ error: message }))
-        .finally(() => this.setState({ loading: false }));
+      .fetchMovieWithQuery(query)
+      .then(movies => this.setState({ movies }))
+      .catch(({ message }) => this.setState({ error: message }))
+      .finally(() => this.setState({ loading: false }));
   };
 
   handleChangeQuery = query => {
@@ -46,7 +44,7 @@ export default class MoviesPage extends Component {
       ...this.props.location,
       // pathname: this.props.location.pathname,
       search: `query=${query}`
-    })
+    });
   };
 
   render() {
@@ -55,7 +53,7 @@ export default class MoviesPage extends Component {
     return (
       <>
         <SearchBox onSubmit={this.handleChangeQuery} />
-        {error && <Navigation message={error} />}
+        {/*{error && <Navigation message={error} />}*/}
         {loading && <Spinner />}
         {movies.length > 0 && <MoviesList movies={movies} />}
       </>
