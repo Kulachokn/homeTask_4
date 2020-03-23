@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink, Route, withRouter } from "react-router-dom";
-import routes from "../routes";
-import CastPage from "../views/CastPage";
-import ReviewsPage from "../views/ReviewsPage";
+import CastPage from "../../views/CastPage";
+import ReviewsPage from "../../views/ReviewsPage";
 
 const AdditionalInformation = ({ match, location }) => {
   return (
@@ -13,7 +12,6 @@ const AdditionalInformation = ({ match, location }) => {
           <li>
             <NavLink
               to={{
-                // pathname: `${match.url}${routes.cast}`,
                 pathname: `${match.url}/cast`,
                 state: { from: location.state.from }
               }}
@@ -24,7 +22,6 @@ const AdditionalInformation = ({ match, location }) => {
           <li>
             <NavLink
               to={{
-                // pathname: `${match.url}${routes.reviews}`,
                 pathname: `${match.url}/reviews`,
                 state: { from: location.state.from }
               }}
@@ -33,6 +30,7 @@ const AdditionalInformation = ({ match, location }) => {
             </NavLink>
           </li>
         </ul>
+        <hr />
       </div>
 
       <Route path={`${match.path}/cast`} component={CastPage} />

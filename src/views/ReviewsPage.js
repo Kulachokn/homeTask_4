@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import movieAPI from "../services/movie-api";
 import Spinner from "../components/Loader";
-import Navigation from "../components/Navigation";
-import ReviewsList from "../components/ReviewsList";
+import ReviewsList from "../components/Review/ReviewsList";
+import Notification from "../components/Notification";
 
 export default class ReviewsPage extends Component {
   state = {
@@ -27,7 +27,11 @@ export default class ReviewsPage extends Component {
     const { reviews, error, loading } = this.state;
     return (
       <>
-        {/*{error && <Navigation message={error} />}*/}
+        {error && (
+          <Notification
+            message={`Whoops, something went wrong: ${error.message}`}
+          />
+        )}
         {loading && <Spinner />}
         {reviews.length > 0 ? (
           <ReviewsList reviews={reviews} />

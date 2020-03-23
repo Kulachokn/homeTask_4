@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import movieAPI from "../services/movie-api";
 import routes from "../routes";
 import Spinner from "../components/Loader";
-import Navigation from "../components/Navigation";
-import MovieIntro from "../components/MovieIntro";
-import AdditionalInformation from "../components/AdditionalInformation";
+import MovieIntro from "../components/Movie/MovieIntro";
+import AdditionalInformation from "../components/Movie/AdditionalInformation";
+import Notification from "../components/Notification";
 
 export default class MovieDetailsPage extends Component {
   state = {
@@ -42,17 +42,19 @@ export default class MovieDetailsPage extends Component {
         <button type="button" onSubmit={this.handleGoBack}>
           Back to movies
         </button>
-        {/*<Navigation />*/}
+        {error && (
+          <Notification
+            message={`Whoops, something went wrong: ${error.message}`}
+          />
+        )}
         {loading && <Spinner />}
         {movie && (
           <>
             <MovieIntro movie={movie} />
+            <hr />
             <AdditionalInformation />
           </>
         )}
-
-        {/*<Route path={`${match.path}${routes.cast}`} component={CastPage} />*/}
-        {/*<Route path={`${match.path}${routes.reviews}`} component={ReviewsPage} />*/}
       </main>
     );
   }

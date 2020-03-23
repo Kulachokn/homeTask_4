@@ -1,6 +1,7 @@
 import React from "react";
-import T, { shape } from "prop-types";
+import T from "prop-types";
 import { withRouter } from "react-router-dom";
+import styles from "../MovieIntro.module.css";
 
 const MovieIntro = ({ movie }) => {
   const baseImageUrl = "https://image.tmdb.org/t/p/original/";
@@ -13,14 +14,15 @@ const MovieIntro = ({ movie }) => {
     vote_average
   } = movie;
   return (
-    <>
+    <div className={styles.MovieIntro}>
       <img
         src={`${baseImageUrl}${poster_path}`}
         alt={original_title}
         width="240"
         height="360"
+        className={styles.Image}
       />
-      <>
+      <div className={styles.Intro}>
         <h2>
           {original_title}({release_date})
         </h2>
@@ -28,13 +30,15 @@ const MovieIntro = ({ movie }) => {
         <h3>Overview</h3>
         <p>{overview}</p>
         <h3>Genres</h3>
-        <ul>
+        <ul className={styles.GenresList}>
           {genres.map(({ id, name }) => (
-            <li key={id}>{name}</li>
+            <li className={styles.GenresListItem} key={id}>
+              {name}
+            </li>
           ))}
         </ul>
-      </>
-    </>
+      </div>
+    </div>
   );
 };
 

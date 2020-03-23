@@ -2,8 +2,6 @@ const baseURL = "https://api.themoviedb.org/3/";
 const key = "6198a531689190f0901c4d490477bd53";
 const searchMovies = "search/movie?query=";
 const searchMovieDetails = "movie/";
-// const baseImageUrl = 'https://image.tmdb.org/t/p/original';
-// const noimage = 'https://pixabay.com/';
 
 // https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>
 const fetchMovies = () => {
@@ -49,7 +47,8 @@ const fetchMovieCast = movieId => {
   )
     .then(res => res.json())
     .then(data => {
-      return data.results.cast;
+      // console.log(data)
+      return data.cast;
     });
 };
 

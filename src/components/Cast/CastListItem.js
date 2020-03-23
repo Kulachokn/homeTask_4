@@ -1,5 +1,4 @@
 import React from "react";
-// import movieAPI from "../services/movie-api";
 
 const baseImageUrl = "https://image.tmdb.org/t/p/original";
 const noimage = "https://pixabay.com/";
@@ -9,6 +8,8 @@ const CastListItem = ({ id, name, profile_path, character }) => {
       <img
         src={profile_path ? `${baseImageUrl}${profile_path}` : `${noimage}`}
         alt="Movie effigy"
+        width="100px"
+        height="150px"
       />
       <p>{name}</p>
       <p>Character: {character}</p>
@@ -17,8 +18,3 @@ const CastListItem = ({ id, name, profile_path, character }) => {
 };
 
 export default CastListItem;
-
-// https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=<<api_key>>&language=en-US
-// const baseImageUrl = 'https://image.tmdb.org/t/p/original';
-// https://image.tmdb.org/t/p/w500${imgUrl}
-// https://pixabay.com/

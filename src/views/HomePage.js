@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import MoviesList from "../components/MoviesList";
+import MoviesList from "../components/Movie/MoviesList";
 import movieAPI from "../services/movie-api";
-import Navigation from "../components/Navigation";
 import Loader from "../components/Loader";
+import Notification from "../components/Notification";
+import styles from "../components/HomePage.module.css";
 
 export default class HomePage extends Component {
   state = {
@@ -27,16 +28,15 @@ export default class HomePage extends Component {
   render() {
     const { movies, error, loading } = this.state;
     const { location } = this.props;
-    // console.log(this.props.location);
     return (
       <>
-        {/*{error && (*/}
-        {/*    <Navigation*/}
-        {/*        message={`Whoops, something went wrong: ${error.message}`}*/}
-        {/*    />*/}
-        {/*)}*/}
+        {error && (
+          <Notification
+            message={`Whoops, something went wrong: ${error.message}`}
+          />
+        )}
         {loading && <Loader />}
-        <h2>Trends movies</h2>
+        <h2 className={styles.Title}>Trending movies</h2>
         <MoviesList movies={movies} location={location} />
       </>
     );

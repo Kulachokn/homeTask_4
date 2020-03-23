@@ -1,0 +1,25 @@
+.MovieIntro {
+    display: flex;
+
+}
+
+.Image {
+    margin-right: 20px;
+}
+
+.Intro {
+    font-family: Arial;
+    width: 800px;
+}
+
+.GenresList {
+    display: flex;
+    padding: 0;
+    /*justify-content: space-between;*/
+    /*width: 500px;*/
+}
+
+.GenresListItem {
+    list-style: none;
+    margin-right: 15px;
+}

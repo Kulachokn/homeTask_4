@@ -1,0 +1,27 @@
+.NavigationLink {
+    color: #111111;
+    text-decoration: none;
+}
+
+.NavigationLink:hover {
+    color: #C0392B;
+}
+
+.NavigationLinkActive {
+    color: #C0392B;
+}
+
+.NavigationList {
+    display: flex;
+}
+
+.NavigationListItem {
+    list-style: none;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.NavigationListItem:nth-child(n) {
+    margin-right: 25px;
+}

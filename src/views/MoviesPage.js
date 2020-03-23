@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import SearchBox from "../components/SearchBox";
 import getQueryParams from "../utils/getQueryParams";
 import movieAPI from "../services/movie-api";
-import MoviesList from "../components/MoviesList";
-import Navigation from "../components/Navigation";
+import MoviesList from "../components/Movie/MoviesList";
 import Spinner from "../components/Loader";
+import Notification from "../components/Notification";
 
 export default class MoviesPage extends Component {
   state = {
@@ -53,7 +52,11 @@ export default class MoviesPage extends Component {
     return (
       <>
         <SearchBox onSubmit={this.handleChangeQuery} />
-        {/*{error && <Navigation message={error} />}*/}
+        {error && (
+          <Notification
+            message={`Whoops, something went wrong: ${error.message}`}
+          />
+        )}
         {loading && <Spinner />}
         {movies.length > 0 && <MoviesList movies={movies} />}
       </>
