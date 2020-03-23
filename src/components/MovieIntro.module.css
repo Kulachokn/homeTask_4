@@ -15,8 +15,6 @@
 .GenresList {
     display: flex;
     padding: 0;
-    /*justify-content: space-between;*/
-    /*width: 500px;*/
 }
 
 .GenresListItem {

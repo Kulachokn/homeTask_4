@@ -1,7 +1,9 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { NavLink, Route, withRouter } from "react-router-dom";
-import CastPage from "../../views/CastPage";
-import ReviewsPage from "../../views/ReviewsPage";
+import Spinner from "../Loader";
+
+const ReviewsPage = lazy(() => import("../../views/ReviewsPage"));
+const CastPage = lazy(() => import("../../views/CastPage"));
 
 const AdditionalInformation = ({ match, location }) => {
   return (
@@ -32,9 +34,10 @@ const AdditionalInformation = ({ match, location }) => {
         </ul>
         <hr />
       </div>
-
-      <Route path={`${match.path}/cast`} component={CastPage} />
-      <Route path={`${match.path}/reviews`} component={ReviewsPage} />
+      <Suspense fallback={<Spinner />}>
+        <Route path={`${match.path}/cast`} component={CastPage} />
+        <Route path={`${match.path}/reviews`} component={ReviewsPage} />
+      </Suspense>
     </>
   );
 };
